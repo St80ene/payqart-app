@@ -1,0 +1,74 @@
+.wizard {
+    flex-grow: 1;
+    position: relative;
+    padding: 20px;
+
+    &__title {
+        width: fit-content;
+        margin: auto;
+        display: flex;
+
+        &__changeTab {
+            cursor: pointer;
+        }
+
+        > p:first-child {
+            color: red;
+            position: absolute;
+            top: 5%;
+            left: 4%;
+        }
+    }
+
+    &__item-wrapper {
+        width: 100%;
+        height: 470px;
+    }
+
+    &__button-wrapper {
+        width: 100%;
+        text-align: center;
+
+        &__button {
+            border: 1px solid rgba(204, 41, 82, 0.712);
+            background-color: white;
+            padding: 7px 70px;
+            border-radius: 26px;
+            color: #cc2952b6;
+            font-size: 18px;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    &__circle {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+
+
+        &__index {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: rgba(128, 128, 128, 0.425);
+            font-size: 10px;
+            padding: 3px;
+            text-align: center;
+            color: #ffff;
+        }
+
+        &__line {
+            width: 38px;
+            height: 3px;
+            background: rgba(128, 128, 128, 0.425);
+            margin-top: 8px;
+        }
+    }
+
+}
+
+.is-active {
+    background: rgba(204, 41, 82, 0.712);
+}
