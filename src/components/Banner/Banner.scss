@@ -39,3 +39,10 @@
         width: 100%;
     }
 }
+
+@media(max-width: 570px){
+    .banner {
+        width: 100%;
+        max-height: 580px;
+    }
+}

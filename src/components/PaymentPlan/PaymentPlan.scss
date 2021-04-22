@@ -17,6 +17,11 @@
 		justify-content: space-between;
 		margin: 1rem auto;
 
+		&__active {
+			background-color: #82254c;
+			color: white;
+		}
+
 		> div:first-child {
 			border-top: 10px solid rgb(251, 91, 91);
 		}
@@ -53,8 +58,8 @@
 			height: 220px;
 			display: flex;
 
-			> div:nth-child(1){
-				border-right: 2px solid rgba(204, 198, 198, 0.75);;
+			> div:nth-child(1) {
+				border-right: 2px solid rgba(204, 198, 198, 0.75);
 			}
 
 			> div:nth-child(3) {
@@ -85,17 +90,12 @@
 	cursor: pointer;
 	height: 82px;
 	font-weight: bold;
-	transition: transform .2s;
-
+	transition: transform 0.2s;
 
 	&:hover {
 		color: #ffff;
-		background-color: #82254c9d;
+		background-color: #82254c71;
 		transform: scale(1.1);
-	}
-
-	&:active {
-		background-color: #82254c;
 	}
 
 	&__length {
@@ -127,6 +127,12 @@
 		width: 80%;
 		padding: 4px;
 	}
+	input[type=number] {
+		outline: none;
+		background-color: white;
+		border: none;
+
+	}
 }
 
 .btn-wrapper {
@@ -154,9 +160,16 @@
 	margin-top: 37px;
 	padding: 11px;
 
-
 	&__items {
 		font-size: 13px;
 		padding-top: 6px;
+	}
+
+	&__msg {
+		width: 100%;
+		text-align: center;
+		margin: auto;
+		height: 100%;
+		font-size: 12px;
 	}
 }

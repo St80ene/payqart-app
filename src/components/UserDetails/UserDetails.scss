@@ -16,6 +16,10 @@
 		font-weight: bold;
 		cursor: pointer;
 
+		&__active{
+			border: 1px solid rgba(130, 37, 76, 0.795);
+		}
+
 		&__img {
 			box-shadow: -2px 4px 6px -1px rgba(204, 198, 198, 0.75);
 			border-radius: 8px;
