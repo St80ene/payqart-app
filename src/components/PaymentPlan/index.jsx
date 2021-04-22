@@ -1,9 +1,10 @@
 import './PaymentPlan.scss';
+import { useState } from 'react';
 
-const renderPlan = (type, key, value, handleChange, isActive) => (
+const renderPlan = (type, key, handleChange, activePlan) => (
 	<div
-		onClick={() => handleChange('plan', value)}
-		className={`payment-plan ${isActive && 'active'}`}
+		onClick={() => handleChange('plan', key + 1)}
+		className={`payment-plan ${key + 1 == activePlan && 'payment__plan__active'}`}
 		key={key}
 	>
 		<div className="payment-plan__type">{type}</div>
@@ -12,12 +13,23 @@ const renderPlan = (type, key, value, handleChange, isActive) => (
 	</div>
 );
 
-export default ({ planTypes, handleChange }) => {
+export default ({
+	planTypes,
+	userData,
+	handleChange,
+	activePlan,
+	isLoading,
+	error,
+	response,
+	getApproval,
+}) => {
 	return (
 		<div className="payment">
 			<p className="payment__title">Choose Your Plan</p>
 			<div className="payment__plan">
-				{planTypes.map((items, key) => renderPlan(items, key))}
+				{planTypes.map((items, key) =>
+					renderPlan(items, key, handleChange, activePlan)
+				)}
 			</div>
 			<div className="payment__breakdown">
 				<p className="payment__title">Payment Breakdown</p>
@@ -29,10 +41,33 @@ export default ({ planTypes, handleChange }) => {
 						<div className="shopping-list__items">Tenure</div>
 					</div>
 					<div className="shopping-list">
-						<div className="shopping-list__items">₦20,000</div>
-						<div className="shopping-list__items">₦20,000</div>
-						<div className="shopping-list__items">₦20,000</div>
-						<div className="shopping-list__items">₦20,000</div>
+						{isLoading ? (
+							<div className="shopping-list__msg">
+								<span className="shopping-list">
+									<i>Loading...</i>
+								</span>
+							</div>
+						) : error ? (
+							<div className="shopping-list__msg">
+								<span>{error}</span>
+							</div>
+						) : (
+							<>
+								{' '}
+								<div className="shopping-list__items">
+									{`${'₦ ' + (response ? response.shoppingCredit : '')}`}
+								</div>
+								<div className="shopping-list__items">{`${
+									'₦ ' + (response ? response.downPayment : '')
+								}`}</div>
+								<div className="shopping-list__items">
+									{`${'₦ ' + (response ? response.monthlyRepayment : '')}`}
+								</div>
+								<div className="shopping-list__items">
+									{`${'₦ ' + (response ? response.plan : '')}`}
+								</div>
+							</>
+						)}
 					</div>
 
 					<div>
@@ -40,10 +75,18 @@ export default ({ planTypes, handleChange }) => {
 						<p>Down payment</p>
 						<div className="price-wrapper">
 							<div className="price-wrapper__currency">₦</div>
-							<div className="price-wrapper__amount">21,0000</div>
+							<input
+								type="number"
+								min="0"
+								className="price-wrapper__amount"
+								value={userData.downPayment}
+								onChange={(e) => handleChange('downPayment', e.target.value)}
+							/>
 						</div>
 						<div className="btn-wrapper">
-							<button className="btn-wrapper__btn">Update Breakdown</button>
+							<button onClick={getApproval} className="btn-wrapper__btn">
+								Update Breakdown
+							</button>
 						</div>
 					</div>
 				</div>
@@ -51,3 +94,4 @@ export default ({ planTypes, handleChange }) => {
 		</div>
 	);
 };
+	

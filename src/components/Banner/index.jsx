@@ -9,7 +9,7 @@ export default () => {
 				<img
 					className="banner__bg-img"
 					src={background_img}
-					alt="background-image"
+					alt="background"
 					srcset=""
 				/>
 				<div className="banner__overlay">

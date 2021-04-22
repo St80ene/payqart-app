@@ -12,3 +12,10 @@
     background-color: #ffff;
     padding: 10px;
 }
+
+@media(max-width: 570px){
+    .App {
+        display: flex;
+        flex-direction: column;
+    }
+}

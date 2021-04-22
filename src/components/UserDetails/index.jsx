@@ -2,28 +2,38 @@ import './UserDetails.scss';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const renderTabContent = ({ image, status, value, key, handleChange }) => (
+const renderTabContent = ({
+	image,
+	status,
+	value,
+	key,
+	handleChange,
+	employmentStatus,
+}) => (
 	<div
-		onClick={() => handleChange('employment', value)}
+		onClick={() => handleChange('employmentStatus', value)}
 		className="tab-content__status"
 		key={key}
 	>
-		<div className="tab-content__status__img">
+		<div
+			className={`tab-content__status__img ${
+				value == employmentStatus && 'tab-content__status__active'
+			}`}
+		>
 			<img src={image} alt="" srcset="" />
 		</div>
 		<p className="tab-content__status__description">{status}</p>
 	</div>
 );
 
-export default ({ statusItems, handleChange, userData }) => {
-
+export default ({ statusItems, handleChange, userData, employmentStatus }) => {
 	return (
 		<form>
 			<div className="tab-content">
 				<p className="tab-content__title">What Do You Do?</p>
 				<div className="tab-content__occupation">
 					{statusItems.map((items, key) =>
-						renderTabContent({ ...items, key, handleChange })
+						renderTabContent({ ...items, key, handleChange, employmentStatus })
 					)}
 				</div>
 				<div className="tab-content__salary">
@@ -45,7 +55,6 @@ export default ({ statusItems, handleChange, userData }) => {
 						<DatePicker
 							className="date-picker"
 							selected={userData.payDate}
-							// onSelect={(e) => handleChange('payDate', e.target.value)}
 							onChange={(date) => handleChange('payDate', date)}
 							placeholderText="Select pay date"
 						/>
@@ -58,6 +67,7 @@ export default ({ statusItems, handleChange, userData }) => {
 						<div>
 							<input
 								type="radio"
+								checked={userData.loanExist}
 								name="loan"
 								onChange={(_) => handleChange('loanExist', true)}
 							/>
@@ -67,6 +77,7 @@ export default ({ statusItems, handleChange, userData }) => {
 							<input
 								type="radio"
 								name="loan"
+								checked={!userData.loanExist}
 								onChange={(_) => handleChange('loanExist', false)}
 							/>
 							<span> No </span>
@@ -76,4 +87,4 @@ export default ({ statusItems, handleChange, userData }) => {
 			</div>
 		</form>
 	);
-}
+};
