@@ -5,7 +5,7 @@ import FormWizard from './components/FormWizard';
 import Tab from './components/Tab';
 import UserDetails from './components/UserDetails';
 import PaymentPlan from './components/PaymentPlan';
-import FeedBack from './components/FeedBack';
+// import FeedBack from './components/FeedBack';
 import './App.scss';
 import iphone from './images/iphone.jpg';
 import camera from './images/camera.jpeg';
@@ -87,7 +87,7 @@ const App = () => {
 
 	const changeTab = (value) => {
 
-		if (Number(value) < 0 || Number(value) > 2) {
+		if (Number(value) < 0 || Number(value) > 1) {
 			return;
 		}
 
@@ -151,9 +151,9 @@ const App = () => {
 						getApproval={getApproval}
 					/>
 				</Tab>
-				<Tab isActive={currentTab === 2}>
+				{/* <Tab isActive={currentTab === 2}>
 					<FeedBack userData={userData} />
-				</Tab>
+				</Tab> */}
 			</FormWizard>
 		</div>
 	);

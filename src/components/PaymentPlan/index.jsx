@@ -1,10 +1,9 @@
 import './PaymentPlan.scss';
-import { useState } from 'react';
 
 const renderPlan = (type, key, handleChange, activePlan) => (
 	<div
 		onClick={() => handleChange('plan', key + 1)}
-		className={`payment-plan ${key + 1 == activePlan && 'payment__plan__active'}`}
+		className={`payment-plan ${key + 1 === activePlan && 'payment__plan__active'}`}
 		key={key}
 	>
 		<div className="payment-plan__type">{type}</div>

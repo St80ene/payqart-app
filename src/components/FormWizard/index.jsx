@@ -1,7 +1,5 @@
 import './FormWizard.scss';
 
-import { useState } from 'react';
-
 const pageProgress = (index, isActive, currentTab) => (
 	<div className="form-wizard__circle">
 		{index !== 0 && (
@@ -14,15 +12,6 @@ const pageProgress = (index, isActive, currentTab) => (
 );
 
 export default (props) => {
-	const [loading, setLoading] = useState(true);
-
-	// const setLoader = (currentTab) => {
-	// 	if (currentTab > 2 && loading === false) {
-	// 		return true;
-	// 	}
-	// 	setLoading(false);
-	// };
-	
 
 	return (
 		<div className="form-wizard">
