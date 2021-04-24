@@ -17,7 +17,7 @@ const renderTabContent = ({
 	>
 		<div
 			className={`tab-content__status__img ${
-				value == employmentStatus && 'tab-content__status__active'
+				value === employmentStatus && 'tab-content__status__active'
 			}`}
 		>
 			<img src={image} alt="" srcset="" />
