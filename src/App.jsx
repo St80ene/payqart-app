@@ -18,14 +18,14 @@ const cartItems = [
 	{
 		image: iphone,
 		name: 'Iphone 11 pro max 2010',
-		qty: 12,
-		price: 43500,
+		qty: 1,
+		price: 4500,
 	},
 	{
 		image: camera,
 		name: 'Camera A68 pro white',
-		qty: 40,
-		price: 523400,
+		qty: 50,
+		price: 2000,
 	},
 ];
 
@@ -56,9 +56,8 @@ const planTypes = [
 	'Gentle',
 ];
 
-const getTotalPrice = cartItems.reduce(
-	(prev, curr) => prev + curr.qty * curr.price,
-	0
+const getTotalPrice = new Intl.NumberFormat().format(
+	cartItems.reduce((prev, curr) => prev + curr.qty * curr.price, 0)
 );
 
 const defaultUserData = {
