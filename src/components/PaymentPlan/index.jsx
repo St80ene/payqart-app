@@ -54,16 +54,36 @@ export default ({
 							<>
 								{' '}
 								<div className="shopping-list__items">
-									{`${'₦ ' + (response ? response.shoppingCredit : '')}`}
+									{`${
+										'₦ ' +
+										(response
+											? new Intl.NumberFormat().format(response.shoppingCredit)
+											: '')
+									}`}
 								</div>
 								<div className="shopping-list__items">{`${
-									'₦ ' + (response ? response.downPayment : '')
+									'₦ ' +
+									(response
+										? new Intl.NumberFormat().format(response.downPayment)
+										: '')
 								}`}</div>
 								<div className="shopping-list__items">
-									{`${'₦ ' + (response ? response.monthlyRepayment : '')}`}
+									{`${
+										'₦ ' +
+										(response
+											? new Intl.NumberFormat().format(
+													response.monthlyRepayment
+											  )
+											: '')
+									}`}
 								</div>
 								<div className="shopping-list__items">
-									{`${'₦ ' + (response ? response.plan : '')}`}
+									{`${
+										'₦ ' +
+										(response
+											? new Intl.NumberFormat().format(response.plan)
+											: '')
+									}`}
 								</div>
 							</>
 						)}
@@ -78,7 +98,7 @@ export default ({
 								type="number"
 								min="0"
 								className="price-wrapper__amount"
-								value={userData.downPayment}
+								value={new Intl.NumberFormat().format(userData.downPayment)}
 								onChange={(e) => handleChange('downPayment', e.target.value)}
 							/>
 						</div>
