@@ -13,9 +13,9 @@ export default () => {
 					srcset=""
 				/>
 				<div className="banner__overlay">
-					<p>
+					{/* <p>
 						<i className="fas fa-arrow-left"></i> Back to store
-					</p>
+					</p> */}
 					<img className="banner__logo" src={logo} alt="Logo" srcset="" />
 					<ul className="banner__footer">
 						<li>Get pre-approved instantly.</li>

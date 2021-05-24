@@ -1,4 +1,6 @@
 import './PaymentPlan.scss';
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import Loader from 'react-loader-spinner';
 
 const renderPlan = (type, key, handleChange, activePlan) => (
 	<div
@@ -42,9 +44,13 @@ export default ({
 					<div className="shopping-list">
 						{isLoading ? (
 							<div className="shopping-list__msg">
-								<span className="shopping-list">
-									<i>Loading...</i>
-								</span>
+								<Loader
+									className="feedback__loader"
+									type="Circles"
+									color="#cc2952b6"
+									height={22}
+									width={22}
+								/>
 							</div>
 						) : error ? (
 							<div className="shopping-list__msg">
